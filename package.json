@@ -1,0 +1,19 @@
+{
+  "name": "merge_json",
+  "version": "1.0.0",
+  "description": "A node.js program to merge multiple JSON files into a single JSON file.",
+  "main": "merge_json.js",
+  "scripts": {
+    "test": "node merge_json.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinmeen/merge_json.git"
+  },
+  "author": "Elamaran A E",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinmeen/merge_json/issues"
+  },
+  "homepage": "https://github.com/vinmeen/merge_json#readme"
+}
