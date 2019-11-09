@@ -17,38 +17,38 @@ let removeFilesWithBaseName = (folderName, baseName) => {
 }
 
 let merge = (inputFolderName, inputFileBaseName, outputFolderName, outputFileBaseName, maxFileSize) => {
-    removeFilesWithBaseName(outputFolderName, outputFileBaseName)
+    removeFilesWithBaseName(outputFolderName, outputFileBaseName)   //remove already existing output files if any
     let inputFolderPath = "./" + inputFolderName + "/"
     let files = fs.readdirSync(inputFolderPath)
-    files = files.filter((filename) => {
+    files = files.filter((filename) => {     //read and filter input files
         return filename.startsWith(inputFileBaseName)
     })
     files = files.sort()
-    let prefix = 1
-    let result = {}
+    let suffix = 1
+    let result = {}  // create empty JSON to store merged values
     let backupResult = {}
-    for (let i=0; i<files.length; i++){
+    for (let i=0; i<files.length; i++){      //iterate through each file
         let file = files[i]
         let data = fs.readFileSync(inputFolderPath + file)
         let inputjson = JSON.parse(data)
         
-        for (let key in inputjson) {
+        for (let key in inputjson) {    //iterate through each key
             if (inputjson.hasOwnProperty(key)) {
-                backupResult = JSON.parse(JSON.stringify(result))
+                backupResult = JSON.parse(JSON.stringify(result))   //store a backup in case memory limit exceeds
                 if (result.hasOwnProperty(key)) {
-                    result[key].push.apply(result[key], inputjson[key])
+                    result[key].push.apply(result[key], inputjson[key])  //append to value if key already present
                 } else {
-                    result[key] = inputjson[key]
+                    result[key] = inputjson[key]  //create new key if key not already present
                 }
                 let outputData = JSON.stringify(result, null, 2)
-                if (outputData.length > maxFileSize) {
+                if (outputData.length > maxFileSize) {    //check resulting file size
                     outputData = JSON.stringify(backupResult, null, 2)
-                    fs.writeFileSync("./" + outputFolderName + "/" + outputFileBaseName + prefix + ".json", outputData)
-                    prefix += 1
-                    result = {}
+                    fs.writeFileSync("./" + outputFolderName + "/" + outputFileBaseName + suffix + ".json", outputData) //write the backup to a file
+                    suffix += 1  //increment file number
+                    result = {}  // empty JSON to store new merged values
                     result[key] = inputjson[key]
                     outputData = JSON.stringify(result, null, 2)
-                    if (outputData.length > maxFileSize) {
+                    if (outputData.length > maxFileSize) {  // ERROR - a size of single key-value pair exceeds specified memory limit 
                         removeFilesWithBaseName(outputFolderName, outputFileBaseName)
                         showMemoryError()
                         return
@@ -56,10 +56,12 @@ let merge = (inputFolderName, inputFileBaseName, outputFolderName, outputFileBas
                 }
             }
         }
-        let outputData = JSON.stringify(result, null, 2)
-        fs.writeFileSync("./output/" + outputFileBaseName + prefix + ".json", outputData)
+        let outputData = JSON.stringify(result, null, 2) 
+        fs.writeFileSync("./output/" + outputFileBaseName + suffix + ".json", outputData) //write the last merged JSON to file
     }
 }
 
 
 merge("input", "data", "output", "data", 300)
+
+//merge(INPUT_FOLDER_NAME, INPUT_FILE_BASENAME, OUTPUT_FOLDER_NAME, OUTPUT_FILE_BASENAME, MAX_FILE_LIMIT_IN_BYTES)
