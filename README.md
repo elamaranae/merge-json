@@ -1,7 +1,7 @@
 # merge_json
 A node.js program to merge multiple JSON files into JSON files of specific size.
 
-# Algorithmic Complexity
+## Algorithmic Complexity
     
     the runtime of the merge-json algorithm is O(FKB)
 
@@ -11,7 +11,7 @@ A node.js program to merge multiple JSON files into JSON files of specific size.
     K --> average no of keys in each input files
     B --> b is the specified max file limit because of the line JSON.parse(JSON.stringify(obj))
 
-# Project Structure
+## Project Structure
 
     input  - folder that contains input files
     output - folder that contains output files
@@ -24,6 +24,4 @@ A node.js program to merge multiple JSON files into JSON files of specific size.
 
     run the code using node merge_json.js
 
-
-
-    
+>submitted by Elamaran A E (SASTRA Deemed to be University)
