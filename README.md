@@ -18,11 +18,9 @@ A node.js program to merge multiple JSON files into JSON files of specific size.
 
     merge_json.js - script to perform merging
 
-    parameter can be change inside the program as specified below,
+    parameters can be change inside the program as specified below,
 
-    merge(INPUT_FOLDER_NAME, INPUT_FILE_BASENAME, 
-        OUTPUT_FOLDER_NAME, OUTPUT_FILE_BASENAME, 
-        MAX_FILE_LIMIT_IN_BYTES)
+    merge(INPUT_FOLDER_NAME, INPUT_FILE_BASENAME, OUTPUT_FOLDER_NAME, OUTPUT_FILE_BASENAME, MAX_FILE_LIMIT_IN_BYTES)
 
     run the code using node merge_json.js
 
