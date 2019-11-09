@@ -7,9 +7,9 @@ A node.js program to merge multiple JSON files into JSON files of specific size.
 
     where,
 
-    f --> no of input files
-    k --> average no of keys in each input files
-    b --> b is the specified max file limit because of the line JSON.parse(JSON.stringify(obj))
+    F --> no of input files
+    K --> average no of keys in each input files
+    B --> b is the specified max file limit because of the line JSON.parse(JSON.stringify(obj))
 
 # Project Structure
 
