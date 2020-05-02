@@ -1,4 +1,4 @@
-# merge_json
+# merge-json
 A node.js program to merge multiple JSON files into JSON files of specific size.
 
 ## Algorithmic Complexity
