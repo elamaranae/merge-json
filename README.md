@@ -1,4 +1,5 @@
 # merge-json
+
 A node.js program to merge multiple JSON files into JSON files of specific size.
 
 ## Algorithmic Complexity
@@ -23,5 +24,3 @@ A node.js program to merge multiple JSON files into JSON files of specific size.
     merge(INPUT_FOLDER_NAME, INPUT_FILE_BASENAME, OUTPUT_FOLDER_NAME, OUTPUT_FILE_BASENAME, MAX_FILE_LIMIT_IN_BYTES)
 
     run the code using node merge_json.js
-
->submitted by Elamaran A E (SASTRA Deemed to be University)
